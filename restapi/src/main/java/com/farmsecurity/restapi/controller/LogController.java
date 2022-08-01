@@ -21,7 +21,7 @@ public class LogController {
         );
     }
 
-    @GetMapping("/select") // READ
+    @GetMapping("/selectLog") // READ
     public List<Log> selectAll(){
         return logRepository.findAll();
     }
@@ -31,8 +31,8 @@ public class LogController {
 
 
     @DeleteMapping("/delete/{log_num}") // DELETE
-    public String deleteLog(@PathVariable("log_num") String id){
-        logRepository.deleteById(id);
+    public String deleteLog(@PathVariable("log_num") String log_num){
+        logRepository.deleteById(log_num);
         return "삭제 완료";
     }
 }

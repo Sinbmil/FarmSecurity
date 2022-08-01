@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "log")
-
 public class Log {
 
     @Id
