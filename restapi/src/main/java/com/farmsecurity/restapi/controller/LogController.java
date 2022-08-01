@@ -27,7 +27,7 @@ public class LogController {
     }
 
     @GetMapping("/select/{log_num}") // READ
-    public Log selectLog(@PathVariable("log_num") String id){return logRepository.findById(id).orElse(null);}
+    public Log selectLog(@PathVariable("log_num") String log_num){return logRepository.findById(log_num).orElse(null);}
 
 
     @DeleteMapping("/delete/{log_num}") // DELETE
