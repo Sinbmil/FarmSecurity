@@ -17,7 +17,7 @@ public class LogController {
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map){
         return logRepository.save(
-                new Log(map.get("log_num"), map.get("camera_name"),  map.get("camera_num"), map.get("link"), map.get("level"), map.get("time"))
+                new Log(map.get("num"), map.get("camera_name"),  map.get("camera_num"), map.get("link"), map.get("level"), map.get("time"))
         );
     }
 
@@ -26,12 +26,12 @@ public class LogController {
         return logRepository.findAll();
     }
 
-    @GetMapping("/select/{log_num}") // READ
-    public Log selectLog(@PathVariable("log_num") String log_num){return logRepository.findById(log_num).orElse(null);}
+    @GetMapping("/select/{num}") // READ
+    public Log selectLog(@PathVariable("num") String log_num){return logRepository.findById(log_num).orElse(null);}
 
 
-    @DeleteMapping("/delete/{log_num}") // DELETE
-    public String deleteLog(@PathVariable("log_num") String log_num){
+    @DeleteMapping("/delete/{num}") // DELETE
+    public String deleteLog(@PathVariable("num") String log_num){
         logRepository.deleteById(log_num);
         return "삭제 완료";
     }

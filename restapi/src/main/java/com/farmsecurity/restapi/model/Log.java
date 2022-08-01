@@ -17,8 +17,8 @@ public class Log {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="log_num")
-    private String log_num;
+    @Column(name="num")
+    private String num;
     private String camera_name;
     private String camera_num;
     private String link;
@@ -28,8 +28,8 @@ public class Log {
     @CreationTimestamp
     private Date createdAt;
 
-    public Log(String log_num, String camera_name, String camera_num, String link, String level, String time){
-        this.log_num = log_num;
+    public Log(String num, String camera_name, String camera_num, String link, String level, String time){
+        this.num = num;
         this.camera_name = camera_name;
         this.camera_num = camera_num;
         this.link = link;

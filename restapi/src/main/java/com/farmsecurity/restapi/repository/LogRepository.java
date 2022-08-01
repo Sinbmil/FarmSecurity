@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface LogRepository extends JpaRepository<Log, String> {
 
-    List<Log> findByNum(String log_num); // 로그 찾기
+    List<Log> findByNum(String num); // 로그 찾기
 }
