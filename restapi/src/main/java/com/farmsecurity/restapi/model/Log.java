@@ -18,7 +18,7 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="num")
-    private String num;
+    private long num;
     private String camera_name;
     private String camera_num;
     private String link;
