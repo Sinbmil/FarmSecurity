@@ -17,7 +17,7 @@ public class LogController {
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map){
         return logRepository.save(
-                new Log(map.get("num"), map.get("camera_name"),  map.get("camera_num"), map.get("link"), map.get("level"), map.get("time"))
+                new Log(map.get("camera_name"),  map.get("camera_num"), map.get("link"), map.get("level"), map.get("time"))
         );
     }
 

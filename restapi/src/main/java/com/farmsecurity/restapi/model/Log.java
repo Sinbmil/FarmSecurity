@@ -28,8 +28,7 @@ public class Log {
     @CreationTimestamp
     private Date createdAt;
 
-    public Log(String num, String camera_name, String camera_num, String link, String level, String time){
-        this.num = num;
+    public Log(String camera_name, String camera_num, String link, String level, String time){
         this.camera_name = camera_name;
         this.camera_num = camera_num;
         this.link = link;
