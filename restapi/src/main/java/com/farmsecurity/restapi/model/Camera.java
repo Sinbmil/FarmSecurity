@@ -13,16 +13,15 @@ import javax.persistence.*;
 public class Camera {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="num")
-    private long num;
+    private String camera_num;
 
     private String camera_name;
 
     @JoinColumn(name="member_id")
     private String id;
 
-    public Camera(String camera_name, String id){
+    public Camera(String camera_num, String camera_name, String id){
+        this.camera_num = camera_num;
         this.camera_name = camera_name;
         this.id = id;
     }
