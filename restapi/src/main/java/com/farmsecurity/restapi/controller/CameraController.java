@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.farmsecurity.restapi.model.Camera;
 import com.farmsecurity.restapi.repository.CameraRepository;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RequestMapping("/camera")
 @RestController
@@ -28,11 +27,11 @@ public class CameraController {
     }
 
     @GetMapping("/select/{camera_num}") // READ
-    public Camera selectLog(@PathVariable("camera_num") String camera_num){return cameraRepository.findById(camera_num).orElse(null);}
+    public Camera selectCamera(@PathVariable("camera_num") String camera_num){return cameraRepository.findById(camera_num).orElse(null);}
 
     @DeleteMapping("/delete/{camera_num}") // DELETE
-    public String deleteCamera(@PathVariable("camera_num") String num){
-        cameraRepository.deleteById(num);
+    public String deleteCamera(@PathVariable("camera_num") String camera_num){
+        cameraRepository.deleteById(camera_num);
         return "삭제 완료";
     }
 }
