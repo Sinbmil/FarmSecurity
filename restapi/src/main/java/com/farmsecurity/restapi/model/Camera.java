@@ -11,16 +11,16 @@ import javax.persistence.*;
 public class Camera {
 
     @Id
-    private String camera_num;
+    private String cameraNum;
 
-    private String camera_name;
+    private String cameraName;
 
     @JoinColumn(name="member_id")
     private String id;
 
-    public Camera(String camera_num, String camera_name, String id){
-        this.camera_num = camera_num;
-        this.camera_name = camera_name;
+    public Camera(String cameraNum, String cameraName, String id){
+        this.cameraNum = cameraNum;
+        this.cameraName = cameraName;
         this.id = id;
     }
 }

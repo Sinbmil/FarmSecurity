@@ -17,7 +17,7 @@ public class CameraController {
     @PostMapping("/insert") // CREATE
     public Camera insert(@RequestBody Map<String, String> map){
         return cameraRepository.save(
-                new Camera(map.get("camera_num"), map.get("camera_name"), map.get("id"))
+                new Camera(map.get("cameraNum"), map.get("cameraName"), map.get("id"))
         );
     }
 
@@ -26,12 +26,12 @@ public class CameraController {
         return cameraRepository.findAll();
     }
 
-    @GetMapping("/select/{camera_num}") // READ
-    public Camera selectCamera(@PathVariable("camera_num") String camera_num){return cameraRepository.findById(camera_num).orElse(null);}
+    @GetMapping("/select/{cameraNum}") // READ
+    public Camera selectCamera(@PathVariable("cameraNum") String cameraNum){return cameraRepository.findById(cameraNum).orElse(null);}
 
-    @DeleteMapping("/delete/{camera_num}") // DELETE
-    public String deleteCamera(@PathVariable("camera_num") String camera_num){
-        cameraRepository.deleteById(camera_num);
+    @DeleteMapping("/delete/{cameraNum}") // DELETE
+    public String deleteCamera(@PathVariable("cameraNum") String cameraNum){
+        cameraRepository.deleteById(cameraNum);
         return "삭제 완료";
     }
 }
