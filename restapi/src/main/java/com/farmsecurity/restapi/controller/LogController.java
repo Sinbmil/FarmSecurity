@@ -20,7 +20,7 @@ public class LogController {
 
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map){
-        List<Camera> camera = cameraRepository.findByCamera_num(map.get("camera_num"));
+        List<Camera> camera = cameraRepository.findByCameraNum(map.get("camera_num"));
         if(camera.size() == 1){
             map.put("camera_name",camera.get(0).toString());
              return logRepository.save(
