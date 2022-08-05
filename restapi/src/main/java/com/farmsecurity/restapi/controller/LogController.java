@@ -17,22 +17,21 @@ public class LogController {
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map){
         return logRepository.save(
-                new Log(map.get("camera_num"), map.get("link"), map.get("level"), map.get("time"))
+                new Log(map.get("camera_num"), map.get("camera_name"), map.get("link"), map.get("level"), map.get("time"))
         );
     }
 
-    @GetMapping("/selectLog") // READ
+    @GetMapping("/select") // READ
     public List<Log> selectAll(){
         return logRepository.findAll();
     }
 
     @GetMapping("/select/{num}") // READ
-    public Log selectLog(@PathVariable("num") String log_num){return logRepository.findById(log_num).orElse(null);}
-
+    public Log selectLog(@PathVariable("num") String num){return logRepository.findById(num).orElse(null);}
 
     @DeleteMapping("/delete/{num}") // DELETE
-    public String deleteLog(@PathVariable("num") String log_num){
-        logRepository.deleteById(log_num);
+    public String deleteLog(@PathVariable("num") String num){
+        logRepository.deleteById(num);
         return "삭제 완료";
     }
 }
