@@ -20,7 +20,7 @@ public class Log {
     @Column(name="num")
     private long num;
     @JoinColumn(name="camera_cnum")
-    private String camera_num;
+    private String cnum;
     private String camera_name;
     private String link;
     private String level;
@@ -29,8 +29,8 @@ public class Log {
     @CreationTimestamp
     private Date createdAt;
 
-    public Log(String camera_num, String camera_name, String link, String level, String time){
-        this.camera_num = camera_num;
+    public Log(String cnum, String camera_name, String link, String level, String time){
+        this.cnum = cnum;
         this.camera_name = camera_name;
         this.link = link;
         this.level = level;
