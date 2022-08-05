@@ -19,7 +19,7 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="num")
     private long num;
-    @JoinColumn(name="camera_camera_num")
+    @JoinColumn(name="camera_cnum")
     private String camera_num;
     private String camera_name;
     private String link;
