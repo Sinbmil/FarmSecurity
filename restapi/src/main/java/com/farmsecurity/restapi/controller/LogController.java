@@ -23,7 +23,7 @@ public class LogController {
     public Log insert(@RequestBody Map<String, String> map){
         List<Camera> camera = cameraRepository.findByCnum(map.get("cnum"));
         if(camera.size() == 1){
-            map.put("camera_name",camera.get(0).toString());
+            map.put("camera_name",camera.get(0).getCamera_name());
              return logRepository.save(
                      new Log(map.get("cnum"), map.get("camera_name"), map.get("link"), map.get("level"), map.get("time"))
              );
