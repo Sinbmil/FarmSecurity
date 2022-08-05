@@ -21,11 +21,11 @@ public class LogController {
 
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map){
-        List<Camera> camera = cameraRepository.findByCnum(map.get("cnum"));
+        List<Camera> camera = cameraRepository.findByCamera_num(map.get("camera_num"));
         if(camera.size() == 1){
             map.put("camera_name",camera.get(0).getCamera_name());
              return logRepository.save(
-                     new Log(map.get("cnum"), map.get("camera_name"), map.get("link"), map.get("level"), map.get("time"))
+                     new Log(map.get("camera_num"), map.get("camera_name"), map.get("link"), map.get("level"), map.get("time"))
              );
         } else{
             throw new IllegalStateException("카메라가 존재하지 않습니다.");
