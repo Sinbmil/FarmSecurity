@@ -11,15 +11,15 @@ import javax.persistence.*;
 public class Camera {
 
     @Id
-    private String camera_num;
+    private String cnum;
 
     private String camera_name;
 
     @JoinColumn(name="member_id")
     private String id;
 
-    public Camera(String camera_num, String camera_name, String id){
-        this.camera_num = camera_num;
+    public Camera(String cnum, String camera_name, String id){
+        this.cnum = cnum;
         this.camera_name = camera_name;
         this.id = id;
     }
