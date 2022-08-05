@@ -16,6 +16,7 @@ public class LogController {
     @Autowired
     private LogRepository logRepository;
 
+    @Autowired
     private CameraRepository cameraRepository;
 
     @PostMapping("/insert") // CREATE
