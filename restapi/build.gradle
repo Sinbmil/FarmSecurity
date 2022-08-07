@@ -34,6 +34,9 @@ dependencies {
 
 	// okhttp
 	implementation group: 'com.squareup.okhttp3', name: 'okhttp', version:'4.2.2'
+
+	// json
+	implementation 'org.json:json:20200518'
 }
 
 tasks.named('test') {
