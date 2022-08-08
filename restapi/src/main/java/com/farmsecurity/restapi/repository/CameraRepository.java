@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CameraRepository extends JpaRepository<Camera, String> { // 카메라 레포지토리
 
-    List<Camera> findByCameraNumAndId(String cameraNum, String id); // 카메라 이름, 아이디 찾기
+    List<Camera> findByCameraNum(String cameraNum); // 카메라 이름, 아이디 찾기
 
 }

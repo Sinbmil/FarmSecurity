@@ -33,7 +33,7 @@ public class LogController {
 
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
-        List<Camera> camera = cameraRepository.findByCameraNumAndId(map.get("cameraNum"), map.get("id"));
+        List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
             map.put("id",camera.get(1).getId());
