@@ -8,13 +8,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name ="camera")
-public class Camera {
+public class Camera { // 카메라 테이블
 
     @Id
     private String cameraNum;
-
     private String cameraName;
-
     @JoinColumn(name="member_id")
     private String id;
 

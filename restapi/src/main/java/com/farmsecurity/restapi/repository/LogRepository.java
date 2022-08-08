@@ -7,7 +7,7 @@ import com.farmsecurity.restapi.model.Log;
 import java.util.List;
 
 @Repository
-public interface LogRepository extends JpaRepository<Log, String> {
+public interface LogRepository extends JpaRepository<Log, String> { // 로그 레포지토리
 
     List<Log> findByNum(String num); // 로그 찾기
 }

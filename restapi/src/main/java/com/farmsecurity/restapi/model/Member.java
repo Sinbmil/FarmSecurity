@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "member")
-public class Member {
+public class Member { // 회원 테이블
 
     @Id // 기본키로 지정
     private String id;
