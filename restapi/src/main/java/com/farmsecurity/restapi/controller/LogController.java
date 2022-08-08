@@ -22,6 +22,7 @@ public class LogController {
     @Autowired
     private CameraRepository cameraRepository;
 
+    @Autowired
     private FirebaseCloudMessageService fcs;
 
     @PostMapping("/insert") // CREATE
