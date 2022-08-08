@@ -26,7 +26,7 @@ import java.util.Map;
         transactionManagerRef = "mariaDB_transactionManager",
         entityManagerFactoryRef = "mariaDB_entityManagerFactory"
 )
-public class DBConfig {
+public class DBConfig { // Sprinboot & maria DB 연동
 
     @Primary
     @Bean(name = "maria_dataSource")
