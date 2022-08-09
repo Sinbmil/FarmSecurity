@@ -36,7 +36,7 @@ public class LogController {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
-            fcm.sendMessageTo("dITA_RQySb-4h9bz8_Dnvm:APA91bFa6QfwEAl2zAOGmbwJjYihQ-n1V9NBcU7t-9gE11XWXjHr76mTtXqxzalbTNl4YlYSfqB2VuaS9wbM7U6DcJxddnFr9XpL-kmQZCsxLeNFUG7gHVg3jB-fvep8UPKE1fLRlfne","알림","현재 농장의 상태를 확인해주세요");
+            fcm.sendMessageTo("dDnD8pB7TuSfcvwyXpTG0u:APA91bEBWpWt08cn5PWCIPvARuLRrH1TFOFVbAgHYzk-iNBzcAwOdyuMpW-5tCqNYbuGIZoYFTXAbpDHR2Sko0kilp2aczHoFti331scHO9rHVyqfiellQ5wjxif962_Fn4eC3obk_u3","알림","현재 농장의 상태를 확인해주세요");
              return logRepository.save(
                      new Log(map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
