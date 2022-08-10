@@ -9,9 +9,12 @@ import lombok.RequiredArgsConstructor;
 import okhttp3.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.util.List;
 
+@Service // 예슬 블로그 추가
 @Component
 @RequiredArgsConstructor
 public class FirebaseCloudMessageService {
@@ -22,8 +25,7 @@ public class FirebaseCloudMessageService {
     public void sendMessageTo(String targetToken, String title, String body) throws IOException {
         String message = makeMessage(targetToken, title, body);
         OkHttpClient client = new OkHttpClient();
-        RequestBody requestBody = RequestBody.create(message,
-                MediaType.get("application/json; charset=utf-8"));
+        RequestBody requestBody = RequestBody.create(message, MediaType.get("application/json; charset=utf-8"));
         Request request = new Request.Builder()
                 .url(API_URL)
                 .post(requestBody)
@@ -41,6 +43,12 @@ public class FirebaseCloudMessageService {
                 .message(FcmMessage.Message.builder()
                         .token(targetToken)
                         .notification(FcmMessage.Notification.builder()
+                                .title(title)
+                                .body(body)
+                                .image(null)
+                                .build()
+                        )
+                        .data(FcmMessage.FcmData.builder()
                                 .title(title)
                                 .body(body)
                                 .image(null)
