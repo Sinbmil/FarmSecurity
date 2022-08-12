@@ -15,6 +15,7 @@ public class Log { // 로그 테이블
     @Column(name="num")
     private long num;
 
+    @JoinColumn(name="member_id")
     private String id;
     @JoinColumn(name="camera_cameraNum")
     private String cameraNum;
