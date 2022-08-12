@@ -14,7 +14,8 @@ public class Log { // 로그 테이블
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="num")
     private long num;
-
+    @JoinColumn(name="member_id")
+    private String id;
     @JoinColumn(name="camera_cameraNum")
     private String cameraNum;
     private String cameraName;
@@ -22,7 +23,8 @@ public class Log { // 로그 테이블
     private String level;
     private String time;
 
-    public Log(String cameraNum, String cameraName, String link, String level, String time){
+    public Log(String id, String cameraNum, String cameraName, String link, String level, String time){
+        this.id = id;
         this.cameraNum =cameraNum;
         this.cameraName = cameraName;
         this.link = link;

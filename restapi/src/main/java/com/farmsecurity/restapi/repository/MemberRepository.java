@@ -13,4 +13,5 @@ public interface MemberRepository extends JpaRepository<Member, String> { // 회
     List<Member> findByIdAndPhone(String id, String phone); // 비밀번호 찾기
     List<Member> findByToken(String id); // 토큰 찾기
 
+
 }
