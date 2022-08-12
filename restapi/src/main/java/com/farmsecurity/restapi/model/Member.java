@@ -16,7 +16,6 @@ public class Member { // 회원 테이블
     private String name;
     private String address;
     private String phone;
-
     private String token;
 
     public Member(String id, String pw, String name, String address, String phone, String token){

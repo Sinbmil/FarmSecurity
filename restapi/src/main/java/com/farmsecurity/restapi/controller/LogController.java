@@ -4,6 +4,8 @@ import com.farmsecurity.restapi.firebase.FcmMessage;
 import com.farmsecurity.restapi.firebase.FirebaseCloudMessageService;
 import com.farmsecurity.restapi.firebase.MainController;
 import com.farmsecurity.restapi.model.Camera;
+import com.farmsecurity.restapi.model.Member;
+import com.farmsecurity.restapi.repository.MemberRepository;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,17 +27,18 @@ public class LogController {
     private CameraRepository cameraRepository;
 
     @Autowired
-    private MainController maincontroller;
-
+    private MemberRepository memberRepository;
     @Autowired
     private FirebaseCloudMessageService fcm;
 
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
+        List<Member> member = memberRepository.findByToken(map.get("token"));
+
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
-            fcm.sendMessageTo("dscQz0VnSnKgV9MTpuGxTJ:APA91bHuvPgbBvq2Jy-xytNFvQyIoJOP-IDKLwB2z4L3e--Q-SK34rpVTLHydg7T7w5rWaArtV_VlrBJCk0jePTAViz8jmFOUoRAkKhheGGbyq4JLnviYL3DlsZbEuWJDnLuoKy38ur2","알림","현재 농장의 상태를 확인해주세요");
+            fcm.sendMessageTo(member.get(0).getToken(),"알림","현재 농장의 상태를 확인해주세요");
              return logRepository.save(
                      new Log(map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
