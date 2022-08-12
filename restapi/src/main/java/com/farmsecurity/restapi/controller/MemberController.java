@@ -17,7 +17,7 @@ public class MemberController {
     @PostMapping("/insert") // CREATE
     public Member insert(@RequestBody Map<String, String> map){
         return memberRepository.save(
-                new Member(map.get("id"), map.get("pw"),  map.get("name"), map.get("address"), map.get("phone"))
+                new Member(map.get("id"), map.get("pw"),  map.get("name"), map.get("address"), map.get("phone"), map.get("token"))
         );
     }
 

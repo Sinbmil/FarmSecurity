@@ -30,7 +30,6 @@ public class LogController {
     @Autowired
     private FirebaseCloudMessageService fcm;
 
-
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
