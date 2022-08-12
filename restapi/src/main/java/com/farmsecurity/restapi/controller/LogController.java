@@ -34,13 +34,13 @@ public class LogController {
     @PostMapping("/insert") // CREATE
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
-        List<Member> member = memberRepository.findByToken(map.get("token"));
+        // List<Member> member = memberRepository.findByToken(map.get("token"));
         Optional<Member> member_id = memberRepository.findById(map.get("id"));
 
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
             map.put("id", member_id.get().getId());
-            fcm.sendMessageTo(member.get(0).getToken(),"알림","현재 농장의 상태를 확인해주세요");
+            fcm.sendMessageTo("clZ1uXFKSrm7vIVnkYUJXf:APA91bFQwzSMaE4pquKNnW-XB3aO_xMOrAhYMkxNXmreaKarn2rRZQoCdhEXnHpl6buQvqYSrM5LdG06-uBBduPLJyTKmPa4-noNtljMW9uslyaZim3a6MheW5PDYYZNQ4xldoOcuy3G","알림","현재 농장의 상태를 확인해주세요");
              return logRepository.save(
                      new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
