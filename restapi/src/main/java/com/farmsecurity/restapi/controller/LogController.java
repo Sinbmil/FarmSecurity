@@ -38,8 +38,8 @@ public class LogController {
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
             map.put("id", camera.get(0).getId());
-            List<Member> member = memberRepository.findByToken(map.get("id"));
-            fcm.sendMessageTo(member.get(0).getToken(),"알림","현재 농장의 상태를 확인해주세요");
+            // List<Member> member = memberRepository.findByToken(map.get("id"));
+            fcm.sendMessageTo("clZ1uXFKSrm7vIVnkYUJXf:APA91bFQwzSMaE4pquKNnW-XB3aO_xMOrAhYMkxNXmreaKarn2rRZQoCdhEXnHpl6buQvqYSrM5LdG06-uBBduPLJyTKmPa4-noNtljMW9uslyaZim3a6MheW5PDYYZNQ4xldoOcuy3G","알림","현재 농장의 상태를 확인해주세요");
              return logRepository.save(
                      new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
