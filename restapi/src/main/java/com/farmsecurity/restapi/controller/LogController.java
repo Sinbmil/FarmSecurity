@@ -35,11 +35,11 @@ public class LogController {
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
         List<Member> member = memberRepository.findByToken(map.get("token"));
-
+        String token = member.get(0).getToken();
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
             map.put("id", camera.get(0).getId());
-            fcm.sendMessageTo(member.get(0).getToken(),"알림","현재 농장의 상태를 확인해주세요");
+            fcm.sendMessageTo(token,"알림","현재 농장의 상태를 확인해주세요");
              return logRepository.save(
                      new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
