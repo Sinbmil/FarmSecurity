@@ -39,10 +39,10 @@ public class LogController {
 
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
-            map.put("id", member_id.get(0).getId());
+            map.put("id", member_id.get().getId());
             fcm.sendMessageTo(member.get(0).getToken(),"알림","현재 농장의 상태를 확인해주세요");
              return logRepository.save(
-                     new Log(map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
+                     new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
         } else{
             throw new IllegalStateException("카메라가 존재하지 않습니다.");
