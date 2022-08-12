@@ -40,7 +40,7 @@ public class LogController {
             map.put("id", camera.get(0).getId());
             List<Member> member = memberRepository.findByToken(map.get("id"));
             fcm.sendMessageTo(member.get(0).getToken(),"알림","현재 농장의 상태를 확인해주세요");
-            System.out.println(member.get(0).getToken());
+            System.out.println("what the" + member.get(0).getToken());
              return logRepository.save(
                      new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
