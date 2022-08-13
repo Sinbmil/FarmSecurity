@@ -7,6 +7,8 @@ import com.farmsecurity.restapi.model.Camera;
 import com.farmsecurity.restapi.model.Member;
 import com.farmsecurity.restapi.repository.MemberRepository;
 import com.google.firebase.messaging.FirebaseMessagingException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.farmsecurity.restapi.model.Log;
@@ -32,6 +34,7 @@ public class LogController {
     private FirebaseCloudMessageService fcm;
 
     @PostMapping("/insert") // CREATE
+    @RequestMapping(value="/json.do" , produces="application/json; charset=utf-8")
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
 
@@ -42,6 +45,7 @@ public class LogController {
             String s = member.get(0).getToken();
             fcm.sendMessageTo(s,"알림","현재 농장의 상태를 확인해주세요");
             System.out.println("what the" + s);
+
              return logRepository.save(
                      new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
