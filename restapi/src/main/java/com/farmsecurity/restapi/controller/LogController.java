@@ -31,18 +31,16 @@ public class LogController {
     private FirebaseCloudMessageService fcm;
 
     @PostMapping("/insert") // CREATE
-    @RequestMapping(value="/json.do" , produces="application/json; charset=utf-8")
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
 
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
             map.put("member_id", camera.get(0).getId());
-            List<Member> member = memberRepository.findByToken(map.get("member_id"));
-            String s = member.get(0).getToken();
-            fcm.sendMessageTo(s,"알림","현재 농장의 상태를 확인해주세요");
-            System.out.println("what the" + s);
-
+            // List<Member> member = memberRepository.findByToken(map.get("member_id"));
+            // String s = member.get(0).getToken();
+            fcm.sendMessageTo("clZ1uXFKSrm7vIVnkYUJXf:APA91bFQwzSMaE4pquKNnW-XB3aO_xMOrAhYMkxNXmreaKarn2rRZQoCdhEXnHpl6buQvqYSrM5LdG06-uBBduPLJyTKmPa4-noNtljMW9uslyaZim3a6MheW5PDYYZNQ4xldoOcuy3G","알림","현재 농장의 상태를 확인해주세요");
+            // System.out.println("what the" + s);
              return logRepository.save(
                      new Log(map.get("member_id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
@@ -56,8 +54,11 @@ public class LogController {
         return logRepository.findAll();
     }
 
-    @GetMapping("/select/{num}") // READ
-    public Log selectLog(@PathVariable("num") String num){return logRepository.findById(num).orElse(null);}
+    @GetMapping("/select/{member_id}") // READ
+    public Log findByMemberId(@PathVariable("member_id") String member_id){
+        List<Log> logs = logRepository.findByMemberId(member_id);
+        return logs.get(logs.size()-1);
+    }
 
     @DeleteMapping("/delete/{num}") // DELETE
     public String deleteLog(@PathVariable("num") String num){
