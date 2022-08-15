@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface LogRepository extends JpaRepository<Log, String> { // 로그 레포지토리
 
-    List<Log> findByMemberId(String member_id); // 로그 찾기
+    List<Log> findByMemberId(String memberId); // 로그 찾기
 
 }
