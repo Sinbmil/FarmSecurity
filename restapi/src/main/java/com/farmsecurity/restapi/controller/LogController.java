@@ -2,13 +2,10 @@ package com.farmsecurity.restapi.controller;
 
 import com.farmsecurity.restapi.firebase.FcmMessage;
 import com.farmsecurity.restapi.firebase.FirebaseCloudMessageService;
-import com.farmsecurity.restapi.firebase.MainController;
 import com.farmsecurity.restapi.model.Camera;
 import com.farmsecurity.restapi.model.Member;
 import com.farmsecurity.restapi.repository.MemberRepository;
 import com.google.firebase.messaging.FirebaseMessagingException;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.farmsecurity.restapi.model.Log;
@@ -40,14 +37,14 @@ public class LogController {
 
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
-            map.put("id", camera.get(0).getId());
-            List<Member> member = memberRepository.findByToken(map.get("id"));
+            map.put("member_id", camera.get(0).getId());
+            List<Member> member = memberRepository.findByToken(map.get("member_id"));
             String s = member.get(0).getToken();
             fcm.sendMessageTo(s,"알림","현재 농장의 상태를 확인해주세요");
             System.out.println("what the" + s);
 
              return logRepository.save(
-                     new Log(map.get("id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
+                     new Log(map.get("member_id"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
         } else{
             throw new IllegalStateException("카메라가 존재하지 않습니다.");
