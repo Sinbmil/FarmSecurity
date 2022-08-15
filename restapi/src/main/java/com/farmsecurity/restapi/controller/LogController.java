@@ -37,7 +37,7 @@ public class LogController {
             map.put("memberId", camera.get(0).getId());
             // List<Member> member = memberRepository.findByToken(map.get("memberId"));
             // String s = member.get(0).getToken();
-            fcm.sendMessageTo("cR3lt95YTmCfiizfxNdrKi:APA91bF7hXsPDiso9H32lr1JPhGI-LCfdCHPMh-A0r-Vwz9pD7xpFiOBhUdn510dovO83hinIUXQx15pAnzU-2ipr4-_UtKKcepnLoap_wZ8Qkn0Ws33WPdYwcJQiVicHZZZ1HStf1VW","알림","현재 농장의 상태를 확인해주세요");
+            fcm.sendMessageTo("c65_-j1YTJepTy_yUqkajB:APA91bEsK6FbZ9wrwKeKtc52mUL2Ef9W9L4V_gqc80VzOAscNSP0ceapXwIuYTykB5u-Z0jnYnwjplDzq-EpbTCvS6JRueaUJUiUrb0G8aUcZI5OK4u1LRDRJnzt9Zu2RqH-HxvzCH7a","알림","현재 농장의 상태를 확인해주세요");
             // System.out.println("what the" + s);
              return logRepository.save(
                      new Log(map.get("memberId"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
