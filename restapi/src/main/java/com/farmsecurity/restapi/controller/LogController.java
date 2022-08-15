@@ -36,13 +36,13 @@ public class LogController {
 
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName());
-            map.put("memberId", camera.get(0).getId());
+            // map.put("memberId", camera.get(0).getId());
             // List<Member> member = memberRepository.findByToken(map.get("memberId"));
             // String s = member.get(0).getToken();
             fcm.sendMessageTo("clZ1uXFKSrm7vIVnkYUJXf:APA91bFQwzSMaE4pquKNnW-XB3aO_xMOrAhYMkxNXmreaKarn2rRZQoCdhEXnHpl6buQvqYSrM5LdG06-uBBduPLJyTKmPa4-noNtljMW9uslyaZim3a6MheW5PDYYZNQ4xldoOcuy3G","알림","현재 농장의 상태를 확인해주세요");
             // System.out.println("what the" + s);
              return logRepository.save(
-                     new Log(map.get("memberId"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
+                     new Log(map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
         } else{
             throw new IllegalStateException("카메라가 존재하지 않습니다.");
@@ -54,11 +54,14 @@ public class LogController {
         return logRepository.findAll();
     }
 
+    /*
     @GetMapping("/select/{memberId}") // READ
     public Log findByMemberId(@PathVariable("memberId") String memberId){
         List<Log> logs = logRepository.findByMemberId(memberId);
         return logs.get(logs.size()-1);
     }
+
+    */
 
     @DeleteMapping("/delete/{num}") // DELETE
     public String deleteLog(@PathVariable("num") String num){
