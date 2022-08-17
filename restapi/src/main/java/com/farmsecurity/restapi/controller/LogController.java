@@ -1,10 +1,7 @@
 package com.farmsecurity.restapi.controller;
 
-import com.farmsecurity.restapi.firebase.FcmMessage;
 import com.farmsecurity.restapi.firebase.FirebaseCloudMessageService;
 import com.farmsecurity.restapi.model.Camera;
-import com.farmsecurity.restapi.model.Member;
-import com.farmsecurity.restapi.repository.MemberRepository;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +34,7 @@ public class LogController {
             map.put("memberId", camera.get(0).getId());
             // List<Member> member = memberRepository.findByToken(map.get("memberId"));
             // String s = member.get(0).getToken();
-            fcm.sendMessageTo("e2oQs1h2QmWxJ7YdCK9fct:APA91bFR4P0BFbWgzHP_1wSyf4D5P2eRsLvWD94fKufOj47F5RnmAluXqh-KM5XP-rWH78jw5Y9CL6qx2RbrP_wQV6hr0QGq-T9S9xldP62DKNjn7V9dmDMVkf6z0cv37Msr6zaCgnAN","알림","현재 농장의 상태를 확인해주세요");
+            fcm.sendMessageTo("eZvACPCSTsmNakUvb1RNcj:APA91bEffLhM85xJdGAo3dIGDe-5iOEqmpJh8xS_Otu6M7Z5g2gmVtfyU2_YmDZ-85Q1ZAF3HTCpHgE8--MKM2XGmNx4qMNyIulE_fy3VFk6Oinxsj-caJfluZ6RebGywdssB2D0ARuP","알림","현재 농장의 상태를 확인해주세요");
             // System.out.println("what the" + s);
              return logRepository.save(
                      new Log(map.get("memberId"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
@@ -62,9 +59,9 @@ public class LogController {
     @GetMapping("/select2/{memberId}") // READ
     public Log selectLog(@PathVariable("memberId") String memberId){return logRepository.findById(memberId).orElse(null);}
 
-    @DeleteMapping("/delete/{num}") // DELETE
-    public String deleteLog(@PathVariable("num") String num){
-        logRepository.deleteById(num);
+    @DeleteMapping("/delete/{time}") // DELETE
+    public String deleteLog(@PathVariable("time") String time){
+        logRepository.deleteById(time);
         return "삭제 완료";
     }
 }
