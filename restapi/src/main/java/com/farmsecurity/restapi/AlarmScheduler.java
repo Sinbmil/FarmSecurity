@@ -32,7 +32,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 36 * * * * ")
+    @Scheduled(cron = "0 39 * * * * ")
     public void DailyCheck(){
         System.out.println("실행1");
         int idx = 0;
@@ -55,6 +55,7 @@ public class AlarmScheduler {
         LocalDate timeDate2 = timeDate.plusMonths(1);
         LocalDate todayDate = LocalDate.from(today);
         if(timeDate.isEqual(todayDate)){
+            System.out.println("실행4");
             logRepository.deleteByTime(String.valueOf(time));
         }
     }
