@@ -30,7 +30,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 40 22 * * * ")
+    @Scheduled(cron = "0 50 22 * * * ")
     public void DailyCheck(){
         int idx = 0;
         List<Log> logs = logRepository.findAll();
@@ -41,6 +41,7 @@ public class AlarmScheduler {
             CompareDate(time, today);
             idx ++;
         }
+        System.out.println("실행");
     }
 
     private void CompareDate (String t, LocalDateTime today){
