@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RestapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AlarmScheduler.class, args);
+		SpringApplication.run(RestapiApplication.class, args);
 	}
 
 }
