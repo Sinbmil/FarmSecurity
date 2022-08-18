@@ -49,15 +49,14 @@ public class LogController {
         return logRepository.findAll();
     }
 
-
     @GetMapping("/select/{memberId}") // READ
     public Log findByMemberId(@PathVariable("memberId") String memberId){
         List<Log> logs = logRepository.findByMemberId(memberId);
         return logs.get(logs.size()-1);
     }
 
-    @GetMapping("/select2/{memberId}") // READ
-    public Log selectLog(@PathVariable("memberId") String memberId){return logRepository.findById(memberId).orElse(null);}
+    @GetMapping("/select2/{cameraNum}") // READ
+    public Log selectLog(@PathVariable("cameraNum") String cameraNum){return logRepository.findById(cameraNum).orElse(null);}
 
     @DeleteMapping("/delete/{time}") // DELETE
     public String deleteLog(@PathVariable("time") String time){
