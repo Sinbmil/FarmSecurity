@@ -3,6 +3,7 @@ package com.farmsecurity.restapi;
 import com.farmsecurity.restapi.model.Log;
 import com.farmsecurity.restapi.repository.LogRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AlarmScheduler {
 
+    @Autowired
     private LogRepository logRepository;
 
     /**
@@ -30,7 +32,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 16 * * * * ")
+    @Scheduled(cron = "0 20 * * * * ")
     public void DailyCheck(){
         System.out.println("실행1");
         int idx = 0;
