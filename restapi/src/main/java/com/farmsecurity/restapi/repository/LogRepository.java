@@ -10,7 +10,5 @@ import java.util.List;
 public interface LogRepository extends JpaRepository<Log, String> { // 로그 레포지토리
 
     List<Log> findByMemberId(String memberId); // 실시간 로그 찾기
-
-    List<Log> findByMemberId2(String memberId); // 실시간 로그 찾기
-
+    
 }
