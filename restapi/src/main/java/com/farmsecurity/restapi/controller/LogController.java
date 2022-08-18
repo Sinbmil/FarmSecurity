@@ -58,7 +58,7 @@ public class LogController {
     @GetMapping("/select2/{memberId}") // READ
     public Log selectLog(@PathVariable("memberId") String memberId){
         List<Log> logs = logRepository.findByMemberId(memberId);
-        return (Log) logs;
+        return logs.get(logs.size());
     }
 
     @DeleteMapping("/delete/{time}") // DELETE
