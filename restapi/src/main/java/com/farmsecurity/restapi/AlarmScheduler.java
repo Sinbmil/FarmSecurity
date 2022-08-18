@@ -32,7 +32,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 39 * * * * ")
+    @Scheduled(cron = "0 50 * * * * ")
     public void DailyCheck(){
         System.out.println("실행1");
         int idx = 0;
@@ -48,15 +48,15 @@ public class AlarmScheduler {
         System.out.println("실행3");
     }
 
-    private void CompareDate (String t, LocalDateTime today){
+    public void CompareDate (String t, LocalDateTime today){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd/HH:mm");
         LocalDateTime time = LocalDateTime.parse(t,formatter);
         LocalDate timeDate = LocalDate.from(time);
         LocalDate timeDate2 = timeDate.plusMonths(1);
         LocalDate todayDate = LocalDate.from(today);
         if(timeDate.isEqual(todayDate)){
-            System.out.println("실행4");
             logRepository.deleteByTime(String.valueOf(time));
+            System.out.println("삭제완료");
         }
     }
 }
