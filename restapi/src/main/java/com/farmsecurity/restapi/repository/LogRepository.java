@@ -3,6 +3,7 @@ package com.farmsecurity.restapi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.farmsecurity.restapi.model.Log;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public interface LogRepository extends JpaRepository<Log, String> { // 로그 �
 
     List<Log> findByMemberId(String memberId); // 실시간 로그 찾기
 
+    @Transactional
     List<Log> deleteByTime(String time);
 
 }
