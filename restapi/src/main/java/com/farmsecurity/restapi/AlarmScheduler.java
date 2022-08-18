@@ -32,7 +32,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 26 * * * * ")
+    @Scheduled(cron = "0 36 * * * * ")
     public void DailyCheck(){
         System.out.println("실행1");
         int idx = 0;
