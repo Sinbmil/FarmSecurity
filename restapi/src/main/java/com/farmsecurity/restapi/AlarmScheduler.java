@@ -32,7 +32,7 @@ public class AlarmScheduler {
     //매일 0시 1분에 날짜 체크
     @Scheduled(cron = "0 16 * * * * ")
     public void DailyCheck(){
-        System.out.println("실행");
+        System.out.println("실행1");
         int idx = 0;
         List<Log> logs = logRepository.findAll();
 
@@ -41,9 +41,9 @@ public class AlarmScheduler {
             String time = logs.get(idx).getTime();
             CompareDate(time, today);
             idx ++;
-            System.out.println("실행");
+            System.out.println("실행2");
         }
-        System.out.println("실행");
+        System.out.println("실행3");
     }
 
     private void CompareDate (String t, LocalDateTime today){
