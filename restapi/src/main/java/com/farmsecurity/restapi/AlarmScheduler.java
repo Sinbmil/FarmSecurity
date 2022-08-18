@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,7 +33,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 54 * * * * ")
+    @Scheduled(cron = "0 58 * * * * ")
     public void DailyCheck(){
         System.out.println("실행1");
         int idx = 0;
@@ -48,6 +49,7 @@ public class AlarmScheduler {
         System.out.println("실행3");
     }
 
+    @Transactional
     public void CompareDate (String t, LocalDateTime today){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd/HH:mm");
         LocalDateTime time = LocalDateTime.parse(t,formatter);
