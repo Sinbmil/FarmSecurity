@@ -32,7 +32,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 23 * * * * ")
+    @Scheduled(cron = "0 26 * * * * ")
     public void DailyCheck(){
         System.out.println("실행1");
         int idx = 0;
@@ -49,7 +49,7 @@ public class AlarmScheduler {
     }
 
     private void CompareDate (String t, LocalDateTime today){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd/HH:mm");
         LocalDateTime time = LocalDateTime.parse(t,formatter);
         LocalDate timeDate = LocalDate.from(time);
         LocalDate timeDate2 = timeDate.plusMonths(1);
