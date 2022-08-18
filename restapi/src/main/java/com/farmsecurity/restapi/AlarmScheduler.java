@@ -7,13 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
 
 @SpringBootApplication
 @EnableScheduling
@@ -32,7 +30,7 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 58 22 * * * ")
+    @Scheduled(cron = "0 9 23 * * * ")
     public void DailyCheck(){
         int idx = 0;
         List<Log> logs = logRepository.findAll();
