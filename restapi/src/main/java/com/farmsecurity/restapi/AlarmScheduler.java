@@ -51,7 +51,7 @@ public class AlarmScheduler {
         // 로그 테이블에 있는 시간 데이터를 정해진 타입에 맞게 변경
         LocalDate timeDate = LocalDate.from(time);
 
-        // 기존 시간 데이터에 한 달 더해주기ㅇ
+        // 기존 시간 데이터에 한 달 더해주기
         LocalDate timeDate2 = timeDate.plusMonths(1);
         LocalDate todayDate = LocalDate.from(today);
 
