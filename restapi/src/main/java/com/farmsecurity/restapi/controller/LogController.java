@@ -12,57 +12,51 @@ import com.farmsecurity.restapi.repository.CameraRepository;
 import java.io.IOException;
 import java.util.*;
 
-@RequestMapping("/log")
+@RequestMapping("/log") // 로그 테이블
 @RestController
 public class LogController {
 
     @Autowired
     private LogRepository logRepository;
-
     @Autowired
     private CameraRepository cameraRepository;
-
     @Autowired
     private FirebaseCloudMessageService fcm;
 
-    @PostMapping("/insert") // CREATE
+    // 로그 삽입
+    @PostMapping("/insert")
     public Log insert(@RequestBody Map<String, String> map) throws FirebaseMessagingException, IOException {
         List<Camera> camera = cameraRepository.findByCameraNum(map.get("cameraNum"));
 
         if(camera.size() == 1){
-            map.put("cameraName",camera.get(0).getCameraName());
-            map.put("memberId", camera.get(0).getId());
-            // List<Member> member = memberRepository.findByToken(map.get("memberId"));
-            // String s = member.get(0).getToken();
-            fcm.sendMessageTo("eZvACPCSTsmNakUvb1RNcj:APA91bEffLhM85xJdGAo3dIGDe-5iOEqmpJh8xS_Otu6M7Z5g2gmVtfyU2_YmDZ-85Q1ZAF3HTCpHgE8--MKM2XGmNx4qMNyIulE_fy3VFk6Oinxsj-caJfluZ6RebGywdssB2D0ARuP","알림","현재 농장의 상태를 확인해주세요");
-            // System.out.println("what the" + s);
+            map.put("cameraName",camera.get(0).getCameraName()); // 카메라 이름 get
+            map.put("memberId", camera.get(0).getId());          // 회원 id get
+            fcm.sendMessageTo("f0Emae13Rt2w3uigpeCP1C:APA91bGvyyu2d6EBPSfE18r5uPuejs22ynOiirzE6U7LwTItQNyU0VZaR4cY4m4TZxVE1MyT6f0RKLSlNf4UjO6V0LkNxWpve7wdw3kUOqz8FHHjkvy7HIDmLDWFfdDIHmHgPKXVMH5J","알림","현재 농장의 상태를 확인해주세요");
+
+            // 로그 정보 저장
              return logRepository.save(
                      new Log(map.get("memberId"), map.get("cameraNum"), map.get("cameraName"), map.get("link"), map.get("level"), map.get("time"))
              );
         } else{
+            // 카메라 테이블에 해당하는 카메라가 없을 때 예외처리
             throw new IllegalStateException("카메라가 존재하지 않습니다.");
         }
     }
 
-    @GetMapping("/select") // READ
-    public List<Log> selectAll(){
-        return logRepository.findAll();
-    }
+    // 로그 전체 검색
+    @GetMapping("/select")
+    public List<Log> selectAll(){return logRepository.findAll();}
 
-    @GetMapping("/select/{memberId}") // READ
+    // 마지막 로그 검색
+    @GetMapping("/select/{memberId}")
     public Log findByMemberId(@PathVariable("memberId") String memberId){
         List<Log> logs = logRepository.findByMemberId(memberId);
         return logs.get(logs.size()-1);
     }
 
+    // 로그 검색
     @GetMapping("/select2/{memberId}") // READ
     public List<Log> selectLog(@PathVariable("memberId") String memberId){
         return logRepository.findByMemberId(memberId);
-    }
-
-    @DeleteMapping("/delete/{time}") // DELETE
-    public String deleteLog(@PathVariable("time") String time){
-        logRepository.deleteById(time);
-        return "삭제 완료";
     }
 }
