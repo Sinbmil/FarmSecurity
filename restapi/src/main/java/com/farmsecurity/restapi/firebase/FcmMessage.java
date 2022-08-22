@@ -7,7 +7,7 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 @Getter
-public class FcmMessage {
+public class FcmMessage { // 파이어베이스
     private boolean validateOnly;
     private Message message;
 

@@ -30,27 +30,33 @@ public class AlarmScheduler {
      */
 
     //매일 0시 1분에 날짜 체크
-    @Scheduled(cron = "0 1 * * * * ")
+    @Scheduled(cron = "0 1 0 * * * ")
     public void DailyCheck(){
         int idx = 0;
+        // 로그 테이블 로그 전체 검색
         List<Log> logs = logRepository.findAll();
         LocalDateTime today = LocalDateTime.now();
         for (Log log : logs) {
+            // 로그 테이블의 시간 데이터와 오늘의 시간 비교
             String time = logs.get(idx).getTime();
             CompareDate(time, today);
             idx ++;
         }
     }
 
+    // 날짜 비교
     public void CompareDate (String t, LocalDateTime today){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd/HH:mm:ss");
         LocalDateTime time = LocalDateTime.parse(t,formatter);
+        // 로그 테이블에 있는 시간 데이터를 정해진 타입에 맞게 변경
         LocalDate timeDate = LocalDate.from(time);
 
+        // 기존 시간 데이터에 한 달 더해주기ㅇ
         LocalDate timeDate2 = timeDate.plusMonths(1);
         LocalDate todayDate = LocalDate.from(today);
 
         if(timeDate2.isEqual(todayDate)){
+            // 삽입된 데이터는 한 달이 지나면 삭제
             logRepository.deleteByTime(t);
             System.out.println("삭제완료");
         }

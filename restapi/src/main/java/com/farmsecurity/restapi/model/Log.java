@@ -15,9 +15,9 @@ public class Log { // 로그 테이블
     @Column(name="num")
     private long num;
 
-    @JoinColumn(name="member_id")
+    @JoinColumn(name="member_id")  // 회원 테이블 외래키
     private String memberId;
-    @JoinColumn(name="camera_cameraNum")
+    @JoinColumn(name="camera_cameraNum") // 카메라 테이블 외래키
     private String cameraNum;
     private String cameraName;
     private String link;

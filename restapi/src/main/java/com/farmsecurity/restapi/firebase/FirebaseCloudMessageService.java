@@ -14,14 +14,16 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.List;
 
-@Service // 예슬 블로그 추가
+@Service 
 @Component
 @RequiredArgsConstructor
 public class FirebaseCloudMessageService {
 
+    // 파이어베이스 알림 보내는 주소
     private final String API_URL = "https://fcm.googleapis.com/v1/projects/farmsecurity-fe311/messages:send";
     private final ObjectMapper objectMapper;
 
+    // 파이어베이스 메시지 보내기
     public void sendMessageTo(String targetToken, String title, String body) throws IOException {
         String message = makeMessage(targetToken, title, body);
         OkHttpClient client = new OkHttpClient();
@@ -38,6 +40,7 @@ public class FirebaseCloudMessageService {
         System.out.println(response.body().string());
     }
 
+    // 파이어베이스 메시지 만들기
     private String makeMessage(String targetToken, String title, String body) throws JsonParseException, JsonProcessingException {
         FcmMessage fcmMessage = FcmMessage.builder()
                 .message(FcmMessage.Message.builder()
@@ -60,7 +63,10 @@ public class FirebaseCloudMessageService {
         return objectMapper.writeValueAsString(fcmMessage);
     }
 
+    // 안드로이드 토큰 얻어오기
     private String getAccessToken() throws IOException {
+
+        // 안드로이드 스튜디오 json 파일 얻어오기
         String firebaseConfigPath = "firebase/firebase_service_key.json";
 
         GoogleCredentials googleCredentials = GoogleCredentials
