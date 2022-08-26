@@ -1,6 +1,5 @@
 package com.farmsecurity.restapi.controller;
 
-import com.farmsecurity.restapi.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.farmsecurity.restapi.model.Camera;
