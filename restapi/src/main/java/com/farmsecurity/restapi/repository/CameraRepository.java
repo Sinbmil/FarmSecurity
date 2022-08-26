@@ -13,5 +13,5 @@ public interface CameraRepository extends JpaRepository<Camera, String> { // 카
     List<Camera> findByCameraNum(String cameraNum); // 카메라 이름 찾기
 
     @Transactional
-    List<Camera> deleteByMemberId(String id); // 카메라 - 아이디 찾기
+    List<Camera> deleteByMemberId(String memberId); // 카메라 - 아이디 찾기
 }
