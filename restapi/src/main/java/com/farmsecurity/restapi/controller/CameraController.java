@@ -18,7 +18,7 @@ public class CameraController {
     @PostMapping("/insert")
     public Camera insert(@RequestBody Map<String, String> map){
         return cameraRepository.save(
-                new Camera(map.get("cameraNum"), map.get("cameraName"), map.get("id"))
+                new Camera(map.get("cameraNum"), map.get("cameraName"), map.get("memId"))
         );
     }
 
@@ -33,9 +33,9 @@ public class CameraController {
     public Camera selectCamera(@PathVariable("cameraNum") String cameraNum){return cameraRepository.findById(cameraNum).orElse(null);}
 
     // 카메라 삭제
-    @DeleteMapping("/delete/{id}") // DELETE
-    public String deleteCamera(@PathVariable("id") String id){
-        cameraRepository.deleteById(id);
+    @DeleteMapping("/delete/{memId}") // DELETE
+    public String deleteCamera(@PathVariable("memId") String memId){
+        cameraRepository.deleteByMemId(memId);
         return "삭제 완료";
     }
 }

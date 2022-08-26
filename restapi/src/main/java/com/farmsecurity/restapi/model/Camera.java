@@ -14,11 +14,11 @@ public class Camera { // 카메라 테이블
     private String cameraNum;
     private String cameraName;
     @JoinColumn(name="member_id") // 회원 테이블 외래키
-    private String id;
+    private String memId;
 
-    public Camera(String cameraNum, String cameraName, String id){
+    public Camera(String cameraNum, String cameraName, String memId){
         this.cameraNum = cameraNum;
         this.cameraName = cameraName;
-        this.id = id;
+        this.memId = memId;
     }
 }

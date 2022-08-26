@@ -30,7 +30,7 @@ public class LogController {
 
         if(camera.size() == 1){
             map.put("cameraName",camera.get(0).getCameraName()); // 카메라 이름 get
-            map.put("memberId", camera.get(0).getId());    // 회원 id get
+            map.put("memberId", camera.get(0).getMemId());    // 회원 id get
             fcm.sendMessageTo("f0Emae13Rt2w3uigpeCP1C:APA91bGvyyu2d6EBPSfE18r5uPuejs22ynOiirzE6U7LwTItQNyU0VZaR4cY4m4TZxVE1MyT6f0RKLSlNf4UjO6V0LkNxWpve7wdw3kUOqz8FHHjkvy7HIDmLDWFfdDIHmHgPKXVMH5J","알림","현재 농장의 상태를 확인해주세요");
 
             // 로그 정보 저장
