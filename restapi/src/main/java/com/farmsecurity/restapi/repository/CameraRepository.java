@@ -3,7 +3,6 @@ package com.farmsecurity.restapi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.farmsecurity.restapi.model.Camera;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,5 +11,5 @@ public interface CameraRepository extends JpaRepository<Camera, String> { // 카
 
     List<Camera> findByCameraNum(String cameraNum); // 카메라 이름 찾기
 
-  
+    void deleteById(String id);
 }

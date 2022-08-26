@@ -33,9 +33,9 @@ public class CameraController {
     public Camera selectCamera(@PathVariable("cameraNum") String cameraNum){return cameraRepository.findById(cameraNum).orElse(null);}
 
     // 카메라 삭제
-    @DeleteMapping("/delete/{cameraNum}") // DELETE
-    public String deleteCamera(@PathVariable("cameraNum") String cameraNum){
-        cameraRepository.deleteById(cameraNum);
+    @DeleteMapping("/delete/{id}") // DELETE
+    public String deleteCamera(@PathVariable("id") String id){
+        cameraRepository.deleteById(id);
         return "삭제 완료";
     }
 }
