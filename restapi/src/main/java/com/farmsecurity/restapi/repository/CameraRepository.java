@@ -11,7 +11,7 @@ import java.util.List;
 public interface CameraRepository extends JpaRepository<Camera, String> { // 카메라 레포지토리
 
     List<Camera> findByCameraNum(String cameraNum); // 카메라 이름 찾기
-
+    List<Camera> findByMemId(String memId);
     @Transactional
-    List<Camera> deleteByMemId(String memId);
+    List<Camera> deleteByMemId(String memId); // 카메라 삭제
 }

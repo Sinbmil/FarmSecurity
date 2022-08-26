@@ -1,5 +1,6 @@
 package com.farmsecurity.restapi.controller;
 
+import com.farmsecurity.restapi.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.farmsecurity.restapi.model.Camera;
@@ -26,6 +27,17 @@ public class CameraController {
     @GetMapping("/select")
     public List<Camera> selectAll(){
         return cameraRepository.findAll();
+    }
+
+    @GetMapping("/select2/{memId}")
+    public Camera selectCamera2(@PathVariable("memId") String memId){
+        List<Camera> camera = cameraRepository.findByMemId(memId);
+        if(camera.size() == 1){
+            return camera.get(0);
+        } else{
+            // 회원 테이블에 데이터가 존재하지 않을 때 예외 처리
+            throw new IllegalStateException("카메라가 존재하지 않습니다.");
+        }
     }
 
     // 카메라 검색
