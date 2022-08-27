@@ -62,9 +62,9 @@
 | 언어 | Python |
 | 데이터 수집 | Python / Kaggle 등 |
 | 데이터 train & test | Goolge Colab Pro & Yolov4 |
-| 프론트엔드 | Raact.Js & Android Studio |
-| 백엔드 | Node.Js|
-| DB | MySQL|
+| 프론트엔드 | Android Studio |
+| 백엔드 | SpringBoot|
+| DB | AWS Maria DB|
 | 데브옵스 | Github|
 
 ## 🚥 Yolo 설정
