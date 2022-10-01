@@ -25,12 +25,12 @@
 :heavy_check_mark: 객체는 [사람/동물/새/사물]로 구분<br>
 :heavy_check_mark: 객체 중 새 및 동물은 퇴치 대상에 해당 <br><br>
 
-:two: __카메라 모드를 활용한 객체 촬영, 인식 및 구분__<br>
-:heavy_check_mark: 주간에는 일반 카메라 모드, 야간에는 적외선 카메라 모드로 구분하여 객체 촬영, 인식 및 구분<br><br>
+:two: __차영상 및 YOLO를 활용한 객체 판별 & 객체 탐지__<br>
+:heavy_check_mark: 탐지 측면에서 효율성을 높이기 위해 차영상을 활용<br>
+:heavy_check_mark: 차영상을 통해 기존 배경과 차이 발생 시 YOLO를 실행하여 객체 판별 및 탐지 과정 진행<br><br>
 
-:three: __농경지와 퇴치 대상 사이 거리에 따른 퇴치 동작 다양화__<br>
-:heavy_check_mark: 농경지 밖 0-5m 내에 있을 경우 : 퇴치 신호 활용하여 퇴치 진행<br>
-:heavy_check_mark: 농경지 내 지면에 있을 경우 : 1-4단계 순서대로 퇴치 진행<br>
+:three: __퇴치 동작 다양화__<br>
+:heavy_check_mark: 퇴치 객체 탐지 시 : 1-4단계 순서대로 퇴치 진행<br>
 > :rotating_light: __1단계 : 고강도 조명 출력<br> :sound: 2단계 : 랜덤 퇴치 신호 출력<br> :zap: 3단계 : 고주파수 출력<br> :smiling_imp: 4단계 : 1~3단계 종합 출력__<br>
 <br>
 
@@ -40,17 +40,21 @@
 ## 🐟 H/W & S/W 구성도<br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/186291096-df9253c7-dadf-42e8-898d-3786f0734994.JPG" width="800" height="500"/>
+  <img src="https://user-images.githubusercontent.com/83913056/193379898-761a3ed0-b942-4b11-9647-293b5b40e088.png">
 </div><br>
 
 ✔️ 라즈베리(카메라)는 실시간으로 영상 촬영 및 AI 모듈에 영상 제공<br>
-✔️ AI 모듈은 실시간으로 객체 탐지 실행. 만약 탐지 객체가 동물 또는 새일 경우 퇴치 단계에 따라 라즈베리(빛) 또는 라즈베리(스피커) 제어<br>
+✔️ AI 모듈은 전달받은 영상에서 먼저 차영상을 구함. 탐지된 차영상 있을 시 YOLO로 객체 판별 진행<br>
+✔️ 판별 객체가 퇴치 객체(동물 또는 새)일 경우, AI 모듈은 퇴치 단계에 따라 라즈베리(빛) 또는 라즈베리(스피커) 제어<br>
 ✔️ 라즈베리(빛) 또는 라즈베리(스피커)는 AI 모듈의 제어 신호에 따라 작동됨<br>
 ✔️ AI 모듈은 동물 또는 새 탐지 시 [카메라 일련번호 / 탐지 객체 캡처 링크 / 퇴치 단계 / 탐지 시간] 정보를 서버(=Spring Boot)에 송신<br>
 ✔️ 서버는 실시간으로 AI 모듈에서 보내는 정보를 감지. 감지된 정보가 있을 경우 해당 정보를 DB 삽입. 또한 이 정보를 사용자에게 알림{-> 탐지 객체 있을 경우 사용자가 알아야 하므로}<br>
 ✔️ 사용자가 과거 기록 확인 요청할 경우 해당 요청 정보 확인 가능<br>
 
-## :chart_with_upwards_trend: 순서도
+## :key: ERD
+<img src="https://user-images.githubusercontent.com/83913056/193384192-0a4ad015-52e9-46a2-bdf6-72231994e92c.png">
+
+## :chart_with_upwards_trend: 동물 퇴치 순서도
 <div align="center">
   <img src="https://user-images.githubusercontent.com/80700537/179218577-c5aa5d2d-a47b-4818-831c-6e1da456e6f2.JPG" alt="img2"/>
 </div>
@@ -59,27 +63,18 @@
 
 | 구분 | 사용 Tool / 사이트 / 프레임워크 |     
 | :------: | :-----------------------------------------------:|
-| 언어 | Python |
-| 데이터 수집 | Python / Kaggle 등 |
-| 데이터 train & test | Goolge Colab Pro & Yolov4 |
-| 프론트엔드 | Android Studio |
-| 백엔드 | SpringBoot|
-| DB | AWS Maria DB|
-| 데브옵스 | Github|
+| Data collection | AI Hub / Kaggle 등 |
+| Data train & test | Goolge Colab Pro & Yolov4 |
+| FrontEnd | Android Studio |
+| BackEnd | SpringBoot|
+| DB | Maria DB|
+| Deployment | AWS EC2 |
+| Notification | Firebase|
+| Hardware | Rasberry Pi|
+| Devops | Github|
+| Etc | GCP,GCM,FC,|
 
-## 🚥 Yolo 설정
-### 🎏 __Yolo v4 vs v5 선택__<br>
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/179221837-d6928d6d-3a25-4477-b081-6f0d94b96021.JPG" alt="img3"/>
-</div><br>
-
-> :smiley: 참고 링크 : https://yong0810.tistory.com/30 <br>
-:heavy_check_mark: v5로 선택할 시 좀 더 정확한 인식률 등을 기대할 수 있으나, 이것은 모델 성능 향상에 따른 인식률 등의 개선이지, 연구자 등의 노력으로 인한 개선이 아님<br>
-:heavy_check_mark: 이러한 점과 연구 목적에 맞는 v4가 좀 더 합당하다고 판단하여 v4로 최종적으로 선택하였음<br>
-
-### 🎫 __yolov4의 Darknet을 활용한 객체 탐지__  <br>
-:heavy_check_mark: [객체 탐지 과정 설명 블로그](https://velog.io/@irish/Yolov4%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EA%B0%9D%EC%B2%B4-%ED%83%90%EC%A7%80-%EA%B5%AC%ED%98%84) <br>
-:heavy_check_mark: [정리 ipynb 파일 보기](https://github.com/whdms2008/FarmSecurity/blob/main/Team_AI/All/FarmSecurity_ipynb/220718/farmSecurity.ipynb) <br>
+<br>
 
 # :factory: 학습
 ## :one: __학습 Dataset 개수 차이에 따른 비교__ <br>
@@ -111,7 +106,7 @@ __2. 750장__
 :stars: 150장과 동일하게 750장에서도 Avg Loss는 Iteration이 커질수록 감소, IoU는 Itration이 커질수록 증가<br><br>
 
 __3. 공통점__ <br>
-:stars: 이미지 수와 상관없이 Iteration이 증가할수록, 대부분 Avg Loss는 감소 / IoU는 증가한다는 점을 알 수 있음<br><br><br><br>
+:stars: 이미지 수와 상관없이 Iteration이 증가할수록, 대부분 Avg Loss는 감소 / IoU는 증가한다는 점을 알 수 있음<br><br><br>
 
 __#2 mAP 측면__
 
@@ -141,18 +136,7 @@ __2) Iteration 기준(6000번 vs 9000번)__ <br>
 ## :two: 기법을 적용한 정확도 개선 확인 <br>
 ✔️ 1️⃣에서 확인할 수 있듯이 이미지 수를 늘릴수록, mAP 등 정확도가 높아진다는 것을 알 수 있음 <br>
 ✔️ 이미지 수만 늘려서 정확도를 높이기보다, 특정 기법을 적용해서 정확도를 높이기 위한 방식을 찾아보았음 <br>
-✔️ sharpning 기법, 차영상 기법, sobel 기법을 적용하여 test를 진행하였음 <br>
-
-### 🔪 sharpning 기법 <br>
-✔️ ["sharpning"이란](https://marisara.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-openCV-13-%EB%B8%94%EB%9F%AC%EB%A7%81blurring%EC%8A%A4%EB%AC%B4%EB%94%A9smoothing%EC%83%A4%ED%94%84%EB%8B%9Dsharpening)  <br>
-✔️ sharpning 기법을 적용한 결과는 아래와 같음 <br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/185849277-7f990217-69c1-4b6e-a371-376ca7889cd7.JPG" width="300" height="300"/>
-</div> <br>
-
-🌠 750장 test시 사용했던 동일한 Dataset에 sharpning 기법을 적용 후 train하였고, 이 중 6000.weights 파일 기준으로 test하여 mAP 측정 진행한 것임<br>
-🌠 아무 기법 적용하지 않은 750장 mAP 결과보다, sharpning 기법을 적용한 mAP가 약 10% 정도 낮은 것을 확인할 수 있음<br>
+✔️ 차영상 기법, sobel 기법을 적용하여 test를 진행하였음 <br>
 
 ### 📹 차영상 기법 <br>
 ✔️ ["차영상"이란](https://www.geeksforgeeks.org/python-background-subtraction-using-opencv/) <br>
@@ -299,6 +283,8 @@ __2. 이미지 Test__ <br>
 :two: __2022 청소년/청년 아이디어 경진대회__ <br>
 > :running: [제출 파일 다운로드하러 가기](https://github.com/irishNoah/FarmSecurity_irish/blob/main/contest_exhibit/2022_%EC%B2%AD%EC%86%8C%EB%85%84%26%EC%B2%AD%EB%85%84/FarmSecurity(%EB%B0%95%EC%B0%BD%EC%98%81)_2022_%EC%B2%AD%EC%86%8C%EB%85%84%EC%B2%AD%EB%85%84_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4_%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C.hwp)
 <br>
+
+## :mag_right: 테스트 시연 영상
 
 
 
