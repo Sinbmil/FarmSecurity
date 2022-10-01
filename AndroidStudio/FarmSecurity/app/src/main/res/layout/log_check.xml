@@ -1,216 +1,96 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="40dp">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginBottom="20dp"
-            android:background="#01DFA5"
-            android:textSize="20sp"
-            android:text="메인 화면"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/start_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="21dp"
-            android:textSize="20sp"
-            android:layout_marginBottom="20dp"
-            android:text="시작 날짜"/>
-
-        <Button
-            android:id="@+id/btn_change_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="mOnClick"
-            android:background="#01DFA5"
-            android:layout_marginBottom="20dp"
-            android:text="선택" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/end_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="21dp"
-            android:textSize="20sp"
-            android:layout_marginBottom="50dp"
-            android:text="마지막 날짜" />
-
-        <Button
-            android:id="@+id/btn_change_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="mOnClick"
-            android:background="#01DFA5"
-            android:layout_marginBottom="50dp"
-            android:text="선택" />
-
-    </LinearLayout>
-
-
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:stretchColumns="*">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-
-        <TableRow>
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#E6E6E6"
-                android:textSize="20sp"
-                android:text="날짜" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#E6E6E6"
-                android:textSize="20sp"
-                android:text="종류" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_marginBottom="5dp"
-                android:text="2022-05-31" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="새" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_marginBottom="5dp"
-                android:text="2022-06-01" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="동물" />
-        </TableRow>
-    </TableLayout>
+    tools:context=".Fragment.LogCheckFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="로그 기록"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="30dp" />
 
-            <TextView
-                android:id="@+id/label_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="left"
-                android:text="아이디"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/textview_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="left"
-                android:textSize="18dp" />
-
-        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#000000"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/label_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="left"
-                android:text="이름"
-                android:textSize="18dp" />
+                android:layout_height="match_parent"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="-40dp"
+                android:text="카메라 이름"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="15dp"/>
 
             <TextView
-                android:id="@+id/textview_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="left"
-                android:textSize="18dp" />
+                android:layout_height="match_parent"
+                android:layout_marginRight="40dp"
+                android:text="대응 단계"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="15dp"/>
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:text="탐지 시간"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="15dp"/>
         </LinearLayout>
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="#000000"/>
 
-            <TextView
-                android:id="@+id/label_address"
-                android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/member_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="left"
-                android:text="주소"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/textview_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_gravity="left"
-                android:textSize="18dp" />
-
-        </LinearLayout>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-</LinearLayout>
-
-
-
+</FrameLayout>

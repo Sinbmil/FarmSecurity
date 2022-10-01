@@ -14,10 +14,9 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/farm_security"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="Farm Security"
             android:textStyle="bold"
@@ -33,15 +32,16 @@
            android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/edittext_new_pw"
+            android:id="@+id/new_pw"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="13dp"
             android:paddingLeft="10dp"
+            android:inputType="textPassword"
             android:background="@drawable/edittext_box"
-            android:hint=" 비밀번호(숫자,영문,특수문자 조합 최소8자)" />
+            android:hint="소문자,대문자,숫자,특수문자 조합 최소8자" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,18 +52,19 @@
             android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/edittext_new_pw2"
+            android:id="@+id/new_pw2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="13dp"
             android:paddingLeft="10dp"
+            android:inputType="textPassword"
             android:background="@drawable/edittext_box"
-            android:hint=" 비밀번호(숫자,영문,특수문자 조합 최소8자)" />
+            android:hint="비밀번호 다시 입력" />
 
         <Button
-            android:id="@+id/button_find_pw"
+            android:id="@+id/btn_change_pw"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="30dp"

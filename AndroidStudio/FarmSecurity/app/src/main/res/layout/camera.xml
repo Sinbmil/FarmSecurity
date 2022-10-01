@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Fragment.UserPageFragment">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="Farm Security"
             android:textStyle="bold"
@@ -28,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:gravity="center"
-            android:text="회원정보"
+            android:text="카메라 관리"
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="30dp" />
@@ -37,48 +36,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
-                android:text="아이디"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="5dp"
                 android:layout_gravity="left"
-                android:textSize="18dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
-                android:layout_gravity="left"
-                android:text="이름"
-                android:textStyle="bold"
-                android:textColor="#000000"
+                android:text="카메라 일련번호"
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/textview_name"
-                android:layout_width="wrap_content"
+                android:id="@+id/camera_num"
+                android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
                 android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/update_camera_num"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:background="@drawable/edittext_box"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -89,38 +70,50 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="5dp"
                 android:layout_gravity="left"
-                android:text="주소"
-                android:textStyle="bold"
-                android:textColor="#000000"
+                android:text="카메라 이름"
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/address"
+                android:id="@+id/camera_name"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
                 android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/update_address"
-                android:layout_width="250dp"
+                android:id="@+id/update_camera_name"
+                android:layout_width="200dp"
                 android:layout_height="30dp"
                 android:background="@drawable/edittext_box"
                 android:visibility="gone"/>
 
         </LinearLayout>
 
+
         <Button
-            android:id="@+id/btn_update"
+            android:id="@+id/btn_register"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:background="#01DFA5"
-            android:text="정보변경"
+            android:text="등록"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="#01DFA5"
+            android:text="삭제"
             android:textColor="#ffffff"
             android:textSize="16dp" />
 
@@ -136,36 +129,5 @@
             android:textColor="#ffffff"
             android:textSize="16dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
-            android:background="#000000"/>
-
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:background="#01DFA5"
-            android:layout_marginBottom="20dp"
-            android:letterSpacing="0.5"
-            android:text="로그아웃"
-            android:textColor="#ffffff"
-            android:textSize="17dp" />
-
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:background="#01DFA5"
-            android:letterSpacing="0.5"
-            android:text="회원탈퇴"
-            android:textColor="#ffffff"
-            android:textSize="17dp" />
-
     </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>
