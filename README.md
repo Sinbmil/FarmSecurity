@@ -40,7 +40,7 @@
 ## 🐟 H/W & S/W 구성도<br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/186291096-df9253c7-dadf-42e8-898d-3786f0734994.JPG" width="800" height="500"/>
+  <img src="https://user-images.githubusercontent.com/83913056/193379898-761a3ed0-b942-4b11-9647-293b5b40e088.png">
 </div><br>
 
 ✔️ 라즈베리(카메라)는 실시간으로 영상 촬영 및 AI 모듈에 영상 제공<br>
