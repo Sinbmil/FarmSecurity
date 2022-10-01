@@ -25,12 +25,12 @@
 :heavy_check_mark: 객체는 [사람/동물/새/사물]로 구분<br>
 :heavy_check_mark: 객체 중 새 및 동물은 퇴치 대상에 해당 <br><br>
 
-:two: __카메라 모드를 활용한 객체 촬영, 인식 및 구분__<br>
-:heavy_check_mark: 주간에는 일반 카메라 모드, 야간에는 적외선 카메라 모드로 구분하여 객체 촬영, 인식 및 구분<br><br>
+:two: __차영상 및 YOLO를 활용한 객체 판별 & 객체 탐지__<br>
+:heavy_check_mark: 탐지 측면에서 효율성을 높이기 위해 차영상을 활용<br>
+:heavy_check_mark: 차영상을 통해 기존 배경과 차이 발생 시 YOLO를 실행하여 객체 판별 및 탐지 과정 진행<br><br>
 
-:three: __농경지와 퇴치 대상 사이 거리에 따른 퇴치 동작 다양화__<br>
-:heavy_check_mark: 농경지 밖 0-5m 내에 있을 경우 : 퇴치 신호 활용하여 퇴치 진행<br>
-:heavy_check_mark: 농경지 내 지면에 있을 경우 : 1-4단계 순서대로 퇴치 진행<br>
+:three: __퇴치 동작 다양화__<br>
+:heavy_check_mark: 퇴치 객체 탐지 시 : 1-4단계 순서대로 퇴치 진행<br>
 > :rotating_light: __1단계 : 고강도 조명 출력<br> :sound: 2단계 : 랜덤 퇴치 신호 출력<br> :zap: 3단계 : 고주파수 출력<br> :smiling_imp: 4단계 : 1~3단계 종합 출력__<br>
 <br>
 
@@ -44,11 +44,15 @@
 </div><br>
 
 ✔️ 라즈베리(카메라)는 실시간으로 영상 촬영 및 AI 모듈에 영상 제공<br>
-✔️ AI 모듈은 실시간으로 객체 탐지 실행. 만약 탐지 객체가 동물 또는 새일 경우 퇴치 단계에 따라 라즈베리(빛) 또는 라즈베리(스피커) 제어<br>
+✔️ AI 모듈은 전달받은 영상에서 먼저 차영상을 구함. 탐지된 차영상 있을 시 YOLO로 객체 판별 진행<br>
+✔️ 판별 객체가 퇴치 객체(동물 또는 새)일 경우, AI 모듈은 퇴치 단계에 따라 라즈베리(빛) 또는 라즈베리(스피커) 제어<br>
 ✔️ 라즈베리(빛) 또는 라즈베리(스피커)는 AI 모듈의 제어 신호에 따라 작동됨<br>
 ✔️ AI 모듈은 동물 또는 새 탐지 시 [카메라 일련번호 / 탐지 객체 캡처 링크 / 퇴치 단계 / 탐지 시간] 정보를 서버(=Spring Boot)에 송신<br>
 ✔️ 서버는 실시간으로 AI 모듈에서 보내는 정보를 감지. 감지된 정보가 있을 경우 해당 정보를 DB 삽입. 또한 이 정보를 사용자에게 알림{-> 탐지 객체 있을 경우 사용자가 알아야 하므로}<br>
 ✔️ 사용자가 과거 기록 확인 요청할 경우 해당 요청 정보 확인 가능<br>
+
+## :key: ERD
+<img src="https://user-images.githubusercontent.com/83913056/193384192-0a4ad015-52e9-46a2-bdf6-72231994e92c.png">
 
 ## :chart_with_upwards_trend: 동물 퇴치 순서도
 <div align="center">
@@ -59,13 +63,16 @@
 
 | 구분 | 사용 Tool / 사이트 / 프레임워크 |     
 | :------: | :-----------------------------------------------:|
-| 언어 | Python |
-| 데이터 수집 | Python / Kaggle 등 |
-| 데이터 train & test | Goolge Colab Pro & Yolov4 |
-| 프론트엔드 | Android Studio |
-| 백엔드 | SpringBoot|
-| DB | AWS Maria DB|
-| 데브옵스 | Github|
+| Data collection | AI Hub / Kaggle 등 |
+| Data train & test | Goolge Colab Pro & Yolov4 |
+| FrontEnd | Android Studio |
+| BackEnd | SpringBoot|
+| DB | Maria DB|
+| Deployment | AWS EC2 |
+| Notification | Firebase|
+| Hardware | Rasberry Pi|
+| Devops | Github|
+| Etc | GCP,GCM,FC,|
 
 <br>
 
@@ -99,7 +106,7 @@ __2. 750장__
 :stars: 150장과 동일하게 750장에서도 Avg Loss는 Iteration이 커질수록 감소, IoU는 Itration이 커질수록 증가<br><br>
 
 __3. 공통점__ <br>
-:stars: 이미지 수와 상관없이 Iteration이 증가할수록, 대부분 Avg Loss는 감소 / IoU는 증가한다는 점을 알 수 있음<br><br><br><br>
+:stars: 이미지 수와 상관없이 Iteration이 증가할수록, 대부분 Avg Loss는 감소 / IoU는 증가한다는 점을 알 수 있음<br><br><br>
 
 __#2 mAP 측면__
 
