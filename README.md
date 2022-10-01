@@ -50,7 +50,7 @@
 ✔️ 서버는 실시간으로 AI 모듈에서 보내는 정보를 감지. 감지된 정보가 있을 경우 해당 정보를 DB 삽입. 또한 이 정보를 사용자에게 알림{-> 탐지 객체 있을 경우 사용자가 알아야 하므로}<br>
 ✔️ 사용자가 과거 기록 확인 요청할 경우 해당 요청 정보 확인 가능<br>
 
-## :chart_with_upwards_trend: 순서도
+## :chart_with_upwards_trend: 동물 퇴치 순서도
 <div align="center">
   <img src="https://user-images.githubusercontent.com/80700537/179218577-c5aa5d2d-a47b-4818-831c-6e1da456e6f2.JPG" alt="img2"/>
 </div>
@@ -67,19 +67,7 @@
 | DB | AWS Maria DB|
 | 데브옵스 | Github|
 
-## 🚥 Yolo 설정
-### 🎏 __Yolo v4 vs v5 선택__<br>
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/179221837-d6928d6d-3a25-4477-b081-6f0d94b96021.JPG" alt="img3"/>
-</div><br>
-
-> :smiley: 참고 링크 : https://yong0810.tistory.com/30 <br>
-:heavy_check_mark: v5로 선택할 시 좀 더 정확한 인식률 등을 기대할 수 있으나, 이것은 모델 성능 향상에 따른 인식률 등의 개선이지, 연구자 등의 노력으로 인한 개선이 아님<br>
-:heavy_check_mark: 이러한 점과 연구 목적에 맞는 v4가 좀 더 합당하다고 판단하여 v4로 최종적으로 선택하였음<br>
-
-### 🎫 __yolov4의 Darknet을 활용한 객체 탐지__  <br>
-:heavy_check_mark: [객체 탐지 과정 설명 블로그](https://velog.io/@irish/Yolov4%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EA%B0%9D%EC%B2%B4-%ED%83%90%EC%A7%80-%EA%B5%AC%ED%98%84) <br>
-:heavy_check_mark: [정리 ipynb 파일 보기](https://github.com/whdms2008/FarmSecurity/blob/main/Team_AI/All/FarmSecurity_ipynb/220718/farmSecurity.ipynb) <br>
+<br>
 
 # :factory: 학습
 ## :one: __학습 Dataset 개수 차이에 따른 비교__ <br>
@@ -141,18 +129,7 @@ __2) Iteration 기준(6000번 vs 9000번)__ <br>
 ## :two: 기법을 적용한 정확도 개선 확인 <br>
 ✔️ 1️⃣에서 확인할 수 있듯이 이미지 수를 늘릴수록, mAP 등 정확도가 높아진다는 것을 알 수 있음 <br>
 ✔️ 이미지 수만 늘려서 정확도를 높이기보다, 특정 기법을 적용해서 정확도를 높이기 위한 방식을 찾아보았음 <br>
-✔️ sharpning 기법, 차영상 기법, sobel 기법을 적용하여 test를 진행하였음 <br>
-
-### 🔪 sharpning 기법 <br>
-✔️ ["sharpning"이란](https://marisara.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-openCV-13-%EB%B8%94%EB%9F%AC%EB%A7%81blurring%EC%8A%A4%EB%AC%B4%EB%94%A9smoothing%EC%83%A4%ED%94%84%EB%8B%9Dsharpening)  <br>
-✔️ sharpning 기법을 적용한 결과는 아래와 같음 <br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/185849277-7f990217-69c1-4b6e-a371-376ca7889cd7.JPG" width="300" height="300"/>
-</div> <br>
-
-🌠 750장 test시 사용했던 동일한 Dataset에 sharpning 기법을 적용 후 train하였고, 이 중 6000.weights 파일 기준으로 test하여 mAP 측정 진행한 것임<br>
-🌠 아무 기법 적용하지 않은 750장 mAP 결과보다, sharpning 기법을 적용한 mAP가 약 10% 정도 낮은 것을 확인할 수 있음<br>
+✔️ 차영상 기법, sobel 기법을 적용하여 test를 진행하였음 <br>
 
 ### 📹 차영상 기법 <br>
 ✔️ ["차영상"이란](https://www.geeksforgeeks.org/python-background-subtraction-using-opencv/) <br>
@@ -299,6 +276,8 @@ __2. 이미지 Test__ <br>
 :two: __2022 청소년/청년 아이디어 경진대회__ <br>
 > :running: [제출 파일 다운로드하러 가기](https://github.com/irishNoah/FarmSecurity_irish/blob/main/contest_exhibit/2022_%EC%B2%AD%EC%86%8C%EB%85%84%26%EC%B2%AD%EB%85%84/FarmSecurity(%EB%B0%95%EC%B0%BD%EC%98%81)_2022_%EC%B2%AD%EC%86%8C%EB%85%84%EC%B2%AD%EB%85%84_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4_%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C.hwp)
 <br>
+
+## :mag_right: 테스트 시연 영상
 
 
 
