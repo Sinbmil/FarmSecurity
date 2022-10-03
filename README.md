@@ -37,12 +37,7 @@
 :heavy_check_mark: 퇴치 대상 식별 및 퇴치 단계, 퇴치 여부를 농장 주인에게 알림<br> 
 
 ## 🐟 H/W & S/W 구성도<br>
-__#1 단순 구성도__
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/186291096-df9253c7-dadf-42e8-898d-3786f0734994.JPG" width="800" height="500"/>
-</div> <br><br>
 
-__#2 상세 구성도__ <br>
 <div align="center">
   <img src="https://user-images.githubusercontent.com/80700537/188639417-deef579e-22c8-481c-afca-3c71f208b1e8.JPG" width="700" height="350"/> 
 </div><br><br>
@@ -61,7 +56,7 @@ __#3 구성도 설명__ <br>
   <img src="https://user-images.githubusercontent.com/80700537/188640237-c1407dee-c22d-4075-9293-b1dc26ec1a10.JPG" alt="ERD" width="600" height="450"/>
 </div> <br>
 
-## :chart_with_upwards_trend: 순서도
+## :chart_with_upwards_trend: 동물 퇴치 순서도
 <div align="center">
   <img src="https://user-images.githubusercontent.com/80700537/179218577-c5aa5d2d-a47b-4818-831c-6e1da456e6f2.JPG" alt="img2"/>
 </div>
@@ -79,16 +74,6 @@ __#3 구성도 설명__ <br>
 | Hardware | Raspberry Pi |
 | Devops | Github |
 | Etc | GCP, GCM, FCM |
-
-## 🚥 Yolo 설정
-### 🎏 __Yolo v4 vs v5 선택__<br>
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/80700537/179221837-d6928d6d-3a25-4477-b081-6f0d94b96021.JPG" alt="img3"/>
-</div><br>
-
-> :smiley: 참고 링크 : https://yong0810.tistory.com/30 <br>
-:heavy_check_mark: v5로 선택할 시 좀 더 정확한 인식률 등을 기대할 수 있으나, 이것은 모델 성능 향상에 따른 인식률 등의 개선이지, 연구자 등의 노력으로 인한 개선이 아님<br>
-:heavy_check_mark: 이러한 점과 연구 목적에 맞는 v4가 좀 더 합당하다고 판단하여 v4로 최종적으로 선택하였음<br>
 
 ### 🎫 __yolov4의 Darknet을 활용한 객체 탐지__  <br>
 :heavy_check_mark: [객체 탐지 과정 설명 블로그](https://velog.io/@irish/Yolov4%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EA%B0%9D%EC%B2%B4-%ED%83%90%EC%A7%80-%EA%B5%AC%ED%98%84) <br>
