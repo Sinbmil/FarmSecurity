@@ -381,3 +381,6 @@ __#6 참고 자료__ <br>
 :two: __2022 청소년/청년 아이디어 경진대회__ <br>
 > :running: [제출 파일 다운로드하러 가기](https://github.com/irishNoah/FarmSecurity_irish/blob/main/contest_exhibit/2022_%EC%B2%AD%EC%86%8C%EB%85%84%26%EC%B2%AD%EB%85%84/FarmSecurity(%EB%B0%95%EC%B0%BD%EC%98%81)_2022_%EC%B2%AD%EC%86%8C%EB%85%84%EC%B2%AD%EB%85%84_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4_%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C.hwp)
 <br>
+
+# 팀 인원 구성 및 느낀점<br>
+https://github.com/Sinbmil/FarmSecurity_Sinbmil/wiki
